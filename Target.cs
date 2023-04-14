@@ -5,22 +5,29 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public float health = 50f;
-
-
-    public void TakeDamage(float amount)
+    void Start()
     {
-        health -= amount;
-        if (health <= 0f)
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.A))
         {
-            Die();
+            transform.Translate(-Vector3.right * 3f * Time.deltaTime);
+        }
+         if(Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * 3f * Time.deltaTime);
+        }
+         if(Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.up * 3f * Time.deltaTime);
+        }
+         if(Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(-Vector3.up * 3f * Time.deltaTime);
         }
     }
-
-    void Die()
-    {
-        Destroy(gameObject);
-    }
-
 }
